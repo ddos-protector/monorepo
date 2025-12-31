@@ -1,14 +1,15 @@
 # x402-express-mantle
 
-Express middleware for x402 payment protocol, optimized for Mantle testnet with USDC Token support.
+Complete x402 Express middleware SDK with built-in Mantle testnet support and USDC Token configurations.
 
 ## Features
 
-- ✅ **Mantle Testnet Optimized**: Pre-configured for Mantle testnet (`eip155:5003`)
-- ✅ **USDC Token Support**: Uses correct USDC Token contract with version 1 EIP-712 domain
-- ✅ **Express Integration**: Seamless Express.js middleware integration
-- ✅ **Zero Configuration**: Just import and use - no complex setup needed
-- ✅ **Vercel Compatible**: Works perfectly with serverless deployment
+- ✅ **Bundled SDK**: No external dependencies on @x402 packages
+- ✅ **Mantle Testnet Ready**: Pre-configured for `eip155:5003` with USDC Token support
+- ✅ **EIP-712 Compatible**: Uses "USDC Token" name and version "1" for Mantle contracts
+- ✅ **Express Integration**: Seamless Express.js middleware
+- ✅ **Zero Configuration**: Works out-of-the-box for Mantle development
+- ✅ **TypeScript Support**: Full type definitions included
 
 ## Installation
 
@@ -21,31 +22,30 @@ npm install x402-express-mantle
 ```javascript
 import express from 'express';
 import { paymentMiddlewareFromConfig } from 'x402-express-mantle';
-import { ExactEvmScheme } from '@x402/evm/exact/server';
-import { HTTPFacilitatorClient } from '@x402/core/server';
+import { ExactEvmScheme } from 'x402-express-mantle';
+import { HTTPFacilitatorClient } from 'x402-express-mantle';
 
 const app = express();
 
-// Replace with your facilitator URL
+// Connect to your Mantle facilitator
 const facilitatorClient = new HTTPFacilitatorClient({ 
-  url: 'https://your-facilitator-url.com' 
+  url: 'https://your-mantle-facilitator.com' 
 });
 
-// Routes that require payment on Mantle testnet
+// Routes with automatic Mantle payment processing
 const routes = {
-  'GET /weather': {
+  'GET /premium-data': {
     accepts: [{
       scheme: 'exact',
       price: '$0.001',
-      network: 'eip155:5003', // Mantle testnet
-      payTo: '0xYourWalletAddress'
+      network: 'eip155:5003', // Mantle testnet (pre-configured)
+      payTo: '0xYourMantleWalletAddress'
     }],
-    description: 'Weather data',
-    mimeType: 'application/json'
+    description: 'Premium data access'
   }
 };
 
-// Configure payment schemes for Mantle
+// Configure payment schemes (Mantle support built-in)
 const schemes = [{
   network: 'eip155:5003', // Mantle testnet
   server: new ExactEvmScheme()
@@ -59,11 +59,10 @@ app.use(paymentMiddlewareFromConfig(
 ));
 
 // Your protected route
-app.get('/weather', (req, res) => {
+app.get('/premium-data', (req, res) => {
   res.json({
-    temperature: 72,
-    conditions: 'sunny',
-    location: 'Mantle Testnet'
+    data: 'Premium Mantle content!',
+    network: 'Mantle Testnet'
   });
 });
 
@@ -72,49 +71,68 @@ app.listen(3000);
 
 ## Mantle Testnet Configuration
 
-This package includes pre-configured settings for Mantle testnet:
+This SDK includes pre-built configurations for Mantle testnet:
 
 - **Network**: `eip155:5003`
 - **USDC Contract**: `0x3D884Eca2a1E65A41Cd54b1CF55537dAe35d7BDC`
-- **Token Name**: `USDC Token` (for EIP-712 signing)
+- **Token Name**: `USDC Token` (EIP-712 domain name)
 - **Version**: `1` (EIP-712 domain version)
+- **RPC**: Uses official Mantle testnet endpoints
 
-## API
+## API Reference
 
-This package re-exports all functions from `@x402/express`:
+### `paymentMiddleware(routes, server, paywallConfig?, paywall?, syncFacilitatorOnStart?)`
 
-- `paymentMiddleware(routes, server, paywallConfig?, paywall?, syncFacilitatorOnStart?)`
-- `paymentMiddlewareFromConfig(routes, facilitatorClients?, schemes?, paywallConfig?, paywall?, syncFacilitatorOnStart?)`
-- `x402ResourceServer`, `x402HTTPResourceServer`
-- All types and utilities
+Direct middleware function using a pre-configured server instance.
+
+### `paymentMiddlewareFromConfig(routes, facilitatorClients?, schemes?, paywallConfig?, paywall?, syncFacilitatorOnStart?)`
+
+Configuration-based middleware that creates the server internally.
+
+### Core Classes
+- `x402ResourceServer` - Resource server for advanced configurations
+- `x402HTTPResourceServer` - HTTP resource server
+- `HTTPFacilitatorClient` - Client for connecting to facilitators
+- `ExactEvmScheme` - EVM payment scheme (Mantle-compatible)
 
 ## Environment Variables
 
-Set these for your payment server:
-
 ```bash
-# Your facilitator URL
+# Your facilitator URL (required)
 FACILITATOR_URL=https://your-facilitator.com
 
-# Wallet address to receive payments
-EVM_ADDRESS=0xYourWalletAddress
+# Wallet address for receiving payments (required for routes)
+EVM_ADDRESS=0xYourMantleWalletAddress
 ```
+
+## Supported Networks
+
+- **Mantle Testnet** (`eip155:5003`) - Primary support with full configurations
+- **Other EVM Networks** - Via standard x402 mechanisms
+- **Solana Networks** - Via standard x402 mechanisms
 
 ## Examples
 
 Check the `examples/` directory for complete working examples:
 
 ```bash
-cd examples
+cd node_modules/x402-express-mantle/examples
 npm install
 npm start
 ```
 
+## Built-in Mantle Features
+
+This SDK includes custom Mantle configurations:
+
+1. **USDC Token Support**: Pre-configured with correct contract address and EIP-712 parameters
+2. **Network Definitions**: Mantle testnet properly defined with chain ID 5003
+3. **RPC Endpoints**: Official Mantle testnet RPC configurations
+4. **Scheme Support**: EVM exact scheme configured for Mantle
+
 ## Deployment
 
 ### Vercel
-
-This package works perfectly with Vercel:
 
 ```bash
 npm install x402-express-mantle
@@ -123,13 +141,14 @@ npm install x402-express-mantle
 
 ### Other Platforms
 
-Works with any Node.js platform that supports Express.js.
+Works with any Node.js platform supporting Express.js.
 
-## Important Notes
+## Why This Package?
 
-- **Facilitator Required**: You need a running x402 facilitator that supports Mantle testnet
-- **USDC Token**: The contract uses "USDC Token" as the EIP-712 domain name
-- **Version 1**: The contract uses version "1" for EIP-712 signing
+- **No External Dependencies**: Bundled with all x402 functionality
+- **Mantle Optimized**: Custom configurations for Mantle ecosystem
+- **Developer Friendly**: Zero configuration for Mantle development
+- **Production Ready**: Includes all necessary type definitions and examples
 
 ## License
 

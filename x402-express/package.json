@@ -13,15 +13,13 @@
     "express",
     "payments",
     "blockchain",
-    "usdc"
+    "usdc",
+    "testnet"
   ],
   "license": "Apache-2.0",
   "author": "Mantle x402 Team",
-  "description": "x402 Express middleware configured for Mantle testnet with USDC Token support",
+  "description": "x402 Express middleware SDK with built-in Mantle testnet support and USDC Token configurations",
   "dependencies": {
-    "@x402/core": "^2.1.0",
-    "@x402/evm": "^2.1.0",
-    "@x402/svm": "^2.1.0",
     "@solana/kit": "^2.1.1",
     "viem": "^2.39.3",
     "zod": "^3.24.2"
@@ -34,6 +32,7 @@
   },
   "files": [
     "src",
+    "lib",
     "examples",
     "README.md"
   ]

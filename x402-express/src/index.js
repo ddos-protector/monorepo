@@ -1,4 +1,4 @@
-// Simple re-export of x402/express functionality
-// This package provides Mantle-optimized x402 Express middleware
+// Re-export all x402 express functionality with Mantle support
+// This SDK includes custom Mantle configurations
 
-export * from "@x402/express";
+export * from '../lib/esm/index.mjs';
