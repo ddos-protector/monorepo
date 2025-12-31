@@ -116,7 +116,7 @@ EVM_ADDRESS=0xYourMantleWalletAddress
 Check the `examples/` directory for complete working examples:
 
 ```bash
-cd node_modules/x402-express-mantle/examples
+cd examples/express
 npm install
 npm start
 ```
@@ -136,6 +136,24 @@ This SDK includes custom Mantle configurations:
 
 ```bash
 npm install x402-express-mantle
+
+## Quick Example
+
+```bash
+# Try the example server
+cd examples/express
+npm install
+cp .env-local .env
+# Edit .env with your facilitator URL and EVM address
+npm run dev
+```
+
+The example server demonstrates:
+- Mantle testnet payment integration
+- Multiple pricing tiers ($0.001 and $0.005 USDC)
+- Free and paid endpoints
+- Complete payment flow
+
 # Deploy to Vercel with your environment variables
 ```
 
