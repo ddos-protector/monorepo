@@ -1,4 +1,4 @@
-import { PaymentPayload, PaymentRequirements, SchemeNetworkClient } from "x402-core-mantle/types";
+import { PaymentPayload, PaymentRequirements, SchemeNetworkClient } from "@x402/core/types";
 import { getAddress } from "viem";
 import { authorizationTypes } from "../../constants";
 import { ClientEvmSigner } from "../../signer";

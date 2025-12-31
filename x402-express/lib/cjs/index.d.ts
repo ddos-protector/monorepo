@@ -1,111 +1,91 @@
-import {
-  HTTPAdapter,
-  RoutesConfig,
-  x402ResourceServer,
-  PaywallConfig,
-  PaywallProvider,
-  FacilitatorClient,
-} from "@x402/core/server";
-export {
-  PaywallConfig,
-  PaywallProvider,
-  RouteConfigurationError,
-  RouteValidationError,
-  x402HTTPResourceServer,
-  x402ResourceServer,
-} from "@x402/core/server";
-import { Network, SchemeNetworkServer } from "@x402/core/types";
-export {
-  Network,
-  PaymentPayload,
-  PaymentRequired,
-  PaymentRequirements,
-  SchemeNetworkServer,
-} from "@x402/core/types";
-import { Request, Response, NextFunction } from "express";
+import { HTTPAdapter, RoutesConfig, x402ResourceServer, PaywallConfig, PaywallProvider, FacilitatorClient } from '@x402/core/server';
+export { PaywallConfig, PaywallProvider, RouteConfigurationError, RouteValidationError, x402HTTPResourceServer, x402ResourceServer } from '@x402/core/server';
+import { Network, SchemeNetworkServer } from '@x402/core/types';
+export { Network, PaymentPayload, PaymentRequired, PaymentRequirements, SchemeNetworkServer } from '@x402/core/types';
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * Express adapter implementation
  */
 declare class ExpressAdapter implements HTTPAdapter {
-  private req;
-  /**
-   * Creates a new ExpressAdapter instance.
-   *
-   * @param req - The Express request object
-   */
-  constructor(req: Request);
-  /**
-   * Gets a header value from the request.
-   *
-   * @param name - The header name
-   * @returns The header value or undefined
-   */
-  getHeader(name: string): string | undefined;
-  /**
-   * Gets the HTTP method of the request.
-   *
-   * @returns The HTTP method
-   */
-  getMethod(): string;
-  /**
-   * Gets the path of the request.
-   *
-   * @returns The request path
-   */
-  getPath(): string;
-  /**
-   * Gets the full URL of the request.
-   *
-   * @returns The full request URL
-   */
-  getUrl(): string;
-  /**
-   * Gets the Accept header from the request.
-   *
-   * @returns The Accept header value or empty string
-   */
-  getAcceptHeader(): string;
-  /**
-   * Gets the User-Agent header from the request.
-   *
-   * @returns The User-Agent header value or empty string
-   */
-  getUserAgent(): string;
-  /**
-   * Gets all query parameters from the request URL.
-   *
-   * @returns Record of query parameter key-value pairs
-   */
-  getQueryParams(): Record<string, string | string[]>;
-  /**
-   * Gets a specific query parameter by name.
-   *
-   * @param name - The query parameter name
-   * @returns The query parameter value(s) or undefined
-   */
-  getQueryParam(name: string): string | string[] | undefined;
-  /**
-   * Gets the parsed request body.
-   * Requires express.json() or express.urlencoded() middleware.
-   *
-   * @returns The parsed request body
-   */
-  getBody(): unknown;
+    private req;
+    /**
+     * Creates a new ExpressAdapter instance.
+     *
+     * @param req - The Express request object
+     */
+    constructor(req: Request);
+    /**
+     * Gets a header value from the request.
+     *
+     * @param name - The header name
+     * @returns The header value or undefined
+     */
+    getHeader(name: string): string | undefined;
+    /**
+     * Gets the HTTP method of the request.
+     *
+     * @returns The HTTP method
+     */
+    getMethod(): string;
+    /**
+     * Gets the path of the request.
+     *
+     * @returns The request path
+     */
+    getPath(): string;
+    /**
+     * Gets the full URL of the request.
+     *
+     * @returns The full request URL
+     */
+    getUrl(): string;
+    /**
+     * Gets the Accept header from the request.
+     *
+     * @returns The Accept header value or empty string
+     */
+    getAcceptHeader(): string;
+    /**
+     * Gets the User-Agent header from the request.
+     *
+     * @returns The User-Agent header value or empty string
+     */
+    getUserAgent(): string;
+    /**
+     * Gets all query parameters from the request URL.
+     *
+     * @returns Record of query parameter key-value pairs
+     */
+    getQueryParams(): Record<string, string | string[]>;
+    /**
+     * Gets a specific query parameter by name.
+     *
+     * @param name - The query parameter name
+     * @returns The query parameter value(s) or undefined
+     */
+    getQueryParam(name: string): string | string[] | undefined;
+    /**
+     * Gets the parsed request body.
+     * Requires express.json() or express.urlencoded() middleware.
+     *
+     * @returns The parsed request body
+     */
+    getBody(): unknown;
 }
 
 /**
  * Configuration for registering a payment scheme with a specific network
  */
 interface SchemeRegistration {
-  /**
-   * The network identifier (e.g., 'eip155:84532', 'solana:mainnet')
-   */
-  network: Network;
-  /**
-   * The scheme server implementation for this network
-   */
-  server: SchemeNetworkServer;
+    /**
+     * The network identifier (e.g., 'eip155:84532', 'solana:mainnet')
+     */
+    network: Network;
+    /**
+     * The scheme server implementation for this network
+     */
+    server: SchemeNetworkServer;
 }
 /**
  * Express payment middleware for x402 protocol (direct server instance).
@@ -133,13 +113,7 @@ interface SchemeRegistration {
  * app.use(paymentMiddleware(routes, server, paywallConfig));
  * ```
  */
-declare function paymentMiddleware(
-  routes: RoutesConfig,
-  server: x402ResourceServer,
-  paywallConfig?: PaywallConfig,
-  paywall?: PaywallProvider,
-  syncFacilitatorOnStart?: boolean
-): (req: Request, res: Response, next: NextFunction) => Promise<void>;
+declare function paymentMiddleware(routes: RoutesConfig, server: x402ResourceServer, paywallConfig?: PaywallConfig, paywall?: PaywallProvider, syncFacilitatorOnStart?: boolean): (req: Request, res: Response, next: NextFunction) => Promise<void>;
 /**
  * Express payment middleware for x402 protocol (configuration-based).
  *
@@ -166,18 +140,6 @@ declare function paymentMiddleware(
  * ));
  * ```
  */
-declare function paymentMiddlewareFromConfig(
-  routes: RoutesConfig,
-  facilitatorClients?: FacilitatorClient | FacilitatorClient[],
-  schemes?: SchemeRegistration[],
-  paywallConfig?: PaywallConfig,
-  paywall?: PaywallProvider,
-  syncFacilitatorOnStart?: boolean
-): (req: Request, res: Response, next: NextFunction) => Promise<void>;
+declare function paymentMiddlewareFromConfig(routes: RoutesConfig, facilitatorClients?: FacilitatorClient | FacilitatorClient[], schemes?: SchemeRegistration[], paywallConfig?: PaywallConfig, paywall?: PaywallProvider, syncFacilitatorOnStart?: boolean): (req: Request, res: Response, next: NextFunction) => Promise<void>;
 
-export {
-  ExpressAdapter,
-  type SchemeRegistration,
-  paymentMiddleware,
-  paymentMiddlewareFromConfig,
-};
+export { ExpressAdapter, type SchemeRegistration, paymentMiddleware, paymentMiddlewareFromConfig };

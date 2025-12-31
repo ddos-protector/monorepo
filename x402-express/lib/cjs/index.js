@@ -38,7 +38,7 @@ __export(src_exports, {
   x402ResourceServer: () => import_server2.x402ResourceServer
 });
 module.exports = __toCommonJS(src_exports);
-var import_server = require("@x402/core/server");
+var import_server = require("x402-core-mantle/server");
 
 // src/adapter.ts
 var ExpressAdapter = class {
@@ -130,8 +130,8 @@ var ExpressAdapter = class {
 };
 
 // src/index.ts
-var import_server2 = require("@x402/core/server");
-var import_server3 = require("@x402/core/server");
+var import_server2 = require("x402-core-mantle/server");
+var import_server3 = require("x402-core-mantle/server");
 function checkIfBazaarNeeded(routes) {
   if ("accepts" in routes) {
     return !!(routes.extensions && "bazaar" in routes.extensions);

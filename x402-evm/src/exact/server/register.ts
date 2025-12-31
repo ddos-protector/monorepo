@@ -1,5 +1,5 @@
-import { x402ResourceServer } from "x402-core-mantle/server";
-import { Network } from "x402-core-mantle/types";
+import { x402ResourceServer } from "@x402/core/server";
+import { Network } from "@x402/core/types";
 import { ExactEvmScheme } from "./scheme";
 
 /**
@@ -26,7 +26,7 @@ export interface EvmResourceServerConfig {
  * @example
  * ```typescript
  * import { registerExactEvmScheme } from "@x402/evm/exact/server/register";
- * import { x402ResourceServer } from "x402-core-mantle/server";
+ * import { x402ResourceServer } from "@x402/core/server";
  *
  * const server = new x402ResourceServer(facilitatorClient);
  * registerExactEvmScheme(server, {});

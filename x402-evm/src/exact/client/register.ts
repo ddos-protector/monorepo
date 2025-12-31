@@ -1,5 +1,5 @@
-import { x402Client, SelectPaymentRequirements, PaymentPolicy } from "x402-core-mantle/client";
-import { Network } from "x402-core-mantle/types";
+import { x402Client, SelectPaymentRequirements, PaymentPolicy } from "@x402/core/client";
+import { Network } from "@x402/core/types";
 import { ClientEvmSigner } from "../../signer";
 import { ExactEvmScheme } from "./scheme";
 import { ExactEvmSchemeV1 } from "../v1/client/scheme";
@@ -46,7 +46,7 @@ export interface EvmClientConfig {
  * @example
  * ```typescript
  * import { registerExactEvmScheme } from "@x402/evm/exact/client/register";
- * import { x402Client } from "x402-core-mantle/client";
+ * import { x402Client } from "@x402/core/client";
  * import { privateKeyToAccount } from "viem/accounts";
  *
  * const account = privateKeyToAccount("0x...");

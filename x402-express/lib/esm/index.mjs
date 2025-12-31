@@ -2,7 +2,7 @@
 import {
   x402HTTPResourceServer,
   x402ResourceServer
-} from "@x402/core/server";
+} from "x402-core-mantle/server";
 
 // src/adapter.ts
 var ExpressAdapter = class {
@@ -94,8 +94,8 @@ var ExpressAdapter = class {
 };
 
 // src/index.ts
-import { x402ResourceServer as x402ResourceServer2, x402HTTPResourceServer as x402HTTPResourceServer2 } from "@x402/core/server";
-import { RouteConfigurationError } from "@x402/core/server";
+import { x402ResourceServer as x402ResourceServer2, x402HTTPResourceServer as x402HTTPResourceServer2 } from "x402-core-mantle/server";
+import { RouteConfigurationError } from "x402-core-mantle/server";
 function checkIfBazaarNeeded(routes) {
   if ("accepts" in routes) {
     return !!(routes.extensions && "bazaar" in routes.extensions);

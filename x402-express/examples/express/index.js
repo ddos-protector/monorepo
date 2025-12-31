@@ -1,8 +1,8 @@
 import { config } from 'dotenv';
 import express from 'express';
-import { paymentMiddlewareFromConfig } from 'x402-express-mantle';
-import { ExactEvmScheme } from 'x402-express-mantle';
-import { HTTPFacilitatorClient } from 'x402-express-mantle';
+import { paymentMiddleware, x402ResourceServer } from 'x402-express-mantle';
+import { ExactEvmScheme } from 'x402-evm-mantle';
+import { HTTPFacilitatorClient } from 'x402-core-mantle/http';
 
 config();
 
@@ -26,9 +26,8 @@ const app = express();
 
 // Configure payment middleware with Mantle testnet support
 app.use(
-  paymentMiddlewareFromConfig({
-    facilitatorClient,
-    routes: {
+  paymentMiddleware(
+    {
       'GET /weather': {
         accepts: [
           {
@@ -54,12 +53,11 @@ app.use(
         mimeType: 'application/json',
       },
     },
-    schemes: [
-      new ExactEvmScheme({
-        networks: ['eip155:5003'], // Mantle testnet
-      }),
-    ],
-  })
+    new x402ResourceServer(facilitatorClient).register(
+      'eip155:5003',
+      new ExactEvmScheme()
+    )
+  )
 );
 
 // Weather endpoint - requires $0.001 USDC payment on Mantle testnet

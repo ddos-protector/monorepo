@@ -5,7 +5,7 @@ import {
   Price,
   SchemeNetworkServer,
   MoneyParser,
-} from "x402-core-mantle/types";
+} from "@x402/core/types";
 
 /**
  * EVM server implementation for the Exact payment scheme.

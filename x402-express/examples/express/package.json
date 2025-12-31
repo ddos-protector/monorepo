@@ -12,7 +12,9 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
-    "x402-express-mantle": "^1.0.0"
+    "x402-core-mantle": "^2.1.2-mantle",
+    "x402-evm-mantle": "^2.1.2-mantle",
+    "x402-express-mantle": "^1.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

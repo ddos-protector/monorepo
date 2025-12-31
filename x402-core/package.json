@@ -1,6 +1,6 @@
 {
   "name": "x402-core-mantle",
-  "version": "2.1.1-mantle",
+  "version": "2.1.3-mantle",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/cjs/index.d.ts",

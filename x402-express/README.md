@@ -14,55 +14,63 @@ Complete x402 Express middleware SDK with built-in Mantle testnet support and US
 ## Installation
 
 ```bash
-npm install x402-express-mantle
+npm install x402-express-mantle@1.0.6
 ```
 
 ## Quick Start
 
 ```javascript
-import express from 'express';
-import { paymentMiddlewareFromConfig } from 'x402-express-mantle';
-import { ExactEvmScheme } from 'x402-express-mantle';
-import { HTTPFacilitatorClient } from 'x402-express-mantle';
+import express from "express";
+import { paymentMiddleware, x402ResourceServer } from "x402-express-mantle";
+import { ExactEvmScheme } from "x402-evm-mantle";
+import { HTTPFacilitatorClient } from "x402-core-mantle/http";
 
 const app = express();
 
 // Connect to your Mantle facilitator
-const facilitatorClient = new HTTPFacilitatorClient({ 
-  url: 'https://your-mantle-facilitator.com' 
+const facilitatorClient = new HTTPFacilitatorClient({
+  url: "https://your-mantle-facilitator.com",
 });
 
 // Routes with automatic Mantle payment processing
 const routes = {
-  'GET /premium-data': {
-    accepts: [{
-      scheme: 'exact',
-      price: '$0.001',
-      network: 'eip155:5003', // Mantle testnet (pre-configured)
-      payTo: '0xYourMantleWalletAddress'
-    }],
-    description: 'Premium data access'
-  }
+  "GET /premium-data": {
+    accepts: [
+      {
+        scheme: "exact",
+        price: "$0.001",
+        network: "eip155:5003", // Mantle testnet (pre-configured)
+        payTo: "0xYourMantleWalletAddress",
+      },
+    ],
+    description: "Premium data access",
+  },
 };
 
 // Configure payment schemes (Mantle support built-in)
-const schemes = [{
-  network: 'eip155:5003', // Mantle testnet
-  server: new ExactEvmScheme()
-}];
+const schemes = [
+  {
+    network: "eip155:5003", // Mantle testnet
+    server: new ExactEvmScheme(),
+  },
+];
 
 // Add payment middleware
-app.use(paymentMiddlewareFromConfig(
-  routes,
-  facilitatorClient,
-  schemes
-));
+app.use(
+  paymentMiddleware(
+    routes,
+    new x402ResourceServer(facilitatorClient).register(
+      "eip155:5003",
+      new ExactEvmScheme()
+    )
+  )
+);
 
 // Your protected route
-app.get('/premium-data', (req, res) => {
+app.get("/premium-data", (req, res) => {
   res.json({
-    data: 'Premium Mantle content!',
-    network: 'Mantle Testnet'
+    data: "Premium Mantle content!",
+    network: "Mantle Testnet",
   });
 });
 
@@ -90,6 +98,7 @@ Direct middleware function using a pre-configured server instance.
 Configuration-based middleware that creates the server internally.
 
 ### Core Classes
+
 - `x402ResourceServer` - Resource server for advanced configurations
 - `x402HTTPResourceServer` - HTTP resource server
 - `HTTPFacilitatorClient` - Client for connecting to facilitators
@@ -134,8 +143,8 @@ This SDK includes custom Mantle configurations:
 
 ### Vercel
 
-```bash
-npm install x402-express-mantle
+````bash
+npm install x402-express-mantle@1.0.6
 
 ## Quick Example
 
@@ -146,15 +155,17 @@ npm install
 cp .env-local .env
 # Edit .env with your facilitator URL and EVM address
 npm run dev
-```
+````
 
 The example server demonstrates:
+
 - Mantle testnet payment integration
 - Multiple pricing tiers ($0.001 and $0.005 USDC)
 - Free and paid endpoints
 - Complete payment flow
 
 # Deploy to Vercel with your environment variables
+
 ```
 
 ### Other Platforms
@@ -171,3 +182,4 @@ Works with any Node.js platform supporting Express.js.
 ## License
 
 Apache-2.0
+```

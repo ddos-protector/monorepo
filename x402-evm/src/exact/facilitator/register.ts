@@ -1,5 +1,5 @@
-import { x402Facilitator } from "x402-core-mantle/facilitator";
-import { Network } from "x402-core-mantle/types";
+import { x402Facilitator } from "@x402/core/facilitator";
+import { Network } from "@x402/core/types";
 import { FacilitatorEvmSigner } from "../../signer";
 import { ExactEvmScheme } from "./scheme";
 import { ExactEvmSchemeV1 } from "../v1/facilitator/scheme";
@@ -43,7 +43,7 @@ export interface EvmFacilitatorConfig {
  * @example
  * ```typescript
  * import { registerExactEvmScheme } from "@x402/evm/exact/facilitator/register";
- * import { x402Facilitator } from "x402-core-mantle/facilitator";
+ * import { x402Facilitator } from "@x402/core/facilitator";
  * import { createPublicClient, createWalletClient } from "viem";
  *
  * const facilitator = new x402Facilitator();
