@@ -1,0 +1,25 @@
+{
+  "name": "mantle-facilitator",
+  "version": "1.0.0",
+  "description": "Mantle x402 Facilitator",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@x402/core": "^2.1.0",
+    "@x402/evm": "^2.1.0",
+    "@x402/svm": "^2.1.0",
+    "@scure/base": "^1.2.6",
+    "@solana/kit": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "viem": "^2.21.54"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "mantle-monorepo",
+  "version": "1.0.0",
+  "description": "Mantle Monorepo",
+  "private": true,
+  "workspaces": [
+    "facilitator"
+  ],
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "install:all": "pnpm install",
+    "build:all": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "start": "pnpm -r start"
+  }
+}
