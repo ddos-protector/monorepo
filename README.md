@@ -6,10 +6,10 @@ A monorepo containing multiple packages and submodules for the Mantle project.
 
 ```
 .
-├── facilitator/          # Facilitator package
-├── usdc-faucet/          # USDC Faucet package
+├── facilitator/          # Facilitator code
+├── usdc-faucet/          # USDC Faucet 
 ├── express-example-server/
-├── x402-mantle/          # (submodule) x402 Mantle integration
+├── x402-mantle/          # (submodule) x402 Mantle Support
 ├── scrapper/             # (submodule) Scrapper service
 ├── x402-ratelimiter/     # (submodule) x402 Rate Limiter
 └── scripts/              # Setup and utility scripts
@@ -73,4 +73,5 @@ To update submodules to their latest commits:
 ```bash
 git submodule update --remote
 ```
+
 
