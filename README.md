@@ -12,6 +12,7 @@ A monorepo containing multiple packages and submodules for the Mantle project.
 ├── x402-mantle/          # (submodule) x402 Mantle Support
 ├── scrapper/             # (submodule) Scrapper service
 ├── x402-ratelimiter/     # (submodule) x402 Rate Limiter
+├── mcp/                  # (submodule) MCP
 └── scripts/              # Setup and utility scripts
 ```
 
@@ -67,6 +68,7 @@ This repository includes the following git submodules:
 - **x402-mantle**: https://github.com/ddos-protector/x402-mantle.git
 - **scrapper**: https://github.com/vwakesahu/scrapper.git
 - **x402-ratelimiter**: https://github.com/weshallsah/x402-ratelimiter
+- **mcp**: https://github.com/ddos-protector/mcp.git
 
 To update submodules to their latest commits:
 
