@@ -1,0 +1,9 @@
+[submodule "x402-mantle"]
+	path = x402-mantle
+	url = https://github.com/ddos-protector/x402-mantle.git
+[submodule "scrapper"]
+	path = scrapper
+	url = https://github.com/vwakesahu/scrapper.git
+[submodule "x402-ratelimiter"]
+	path = x402-ratelimiter
+	url = https://github.com/weshallsah/x402-ratelimiter
