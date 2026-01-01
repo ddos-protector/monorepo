@@ -21,6 +21,8 @@ build/
 logs/
 facilitator.log
 
+.claude
+
 # IDE
 .vscode/
 .idea/

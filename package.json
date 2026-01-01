@@ -9,6 +9,8 @@
   ],
   "packageManager": "pnpm@9.15.0",
   "scripts": {
+    "setup": "bash scripts/setup-submodules.sh && pnpm install",
+    "setup:submodules": "bash scripts/setup-submodules.sh",
     "install:all": "pnpm install",
     "build:all": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
