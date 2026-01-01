@@ -7,3 +7,6 @@
 [submodule "x402-ratelimiter"]
 	path = x402-ratelimiter
 	url = https://github.com/weshallsah/x402-ratelimiter
+[submodule "mcp"]
+	path = mcp
+	url = https://github.com/ddos-protector/mcp.git
