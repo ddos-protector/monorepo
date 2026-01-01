@@ -13,6 +13,9 @@
     "build:all": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
     "start": "pnpm -r start",
-    "faucet": "pnpm --filter usdc-faucet dev"
+    "faucet": "pnpm --filter usdc-faucet dev",
+    "faucet:install": "pnpm --filter usdc-faucet install",
+    "faucet:build": "pnpm --filter usdc-faucet build",
+    "faucet:start": "pnpm --filter usdc-faucet start"
   }
 }
