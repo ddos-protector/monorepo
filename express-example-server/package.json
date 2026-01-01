@@ -1,0 +1,24 @@
+{
+  "name": "express-example-server",
+  "version": "1.0.0",
+  "description": "Express server example using x402 payment protocol with Mantle testnet support",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsx index.ts",
+    "dev": "tsx watch index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "x402-core-mantle": "^2.2.0",
+    "x402-evm-mantle": "^2.2.0",
+    "x402-express-mantle": "^2.2.0",
+    "x402-svm-mantle": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
