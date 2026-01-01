@@ -4,13 +4,15 @@
   "description": "Mantle Monorepo",
   "private": true,
   "workspaces": [
-    "facilitator"
+    "facilitator",
+    "usdc-faucet"
   ],
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "install:all": "pnpm install",
     "build:all": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
-    "start": "pnpm -r start"
+    "start": "pnpm -r start",
+    "faucet": "pnpm --filter usdc-faucet dev"
   }
 }
