@@ -28,7 +28,7 @@ A monorepo containing multiple packages and submodules for the Mantle project.
 Clone the repository with submodules:
 
 ```bash
-git clone --recurse-submodules <repo-url>
+git clone --recurse-submodules https://github.com/ddos-protector/monorepo.git
 cd monorepo
 ```
 
@@ -73,3 +73,4 @@ To update submodules to their latest commits:
 ```bash
 git submodule update --remote
 ```
+
