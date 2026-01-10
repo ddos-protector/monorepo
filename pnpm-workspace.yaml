@@ -1,4 +1,4 @@
 packages:
-  - 'facilitator'
-  - 'usdc-faucet'
-
+  - "facilitator"
+  - "usdc-faucet"
+  - "app"
