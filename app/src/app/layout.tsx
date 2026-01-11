@@ -15,8 +15,8 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Domain Register",
-  description: "Register your domain",
+  title: "DDoS App",
+  description: "A protective layer that monetizes bot traffic instead of blocking it. AI scrapers pay to access. You get compensated.",
 };
 
 export default function RootLayout({
