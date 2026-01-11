@@ -145,9 +145,6 @@ const Page = () => {
           <img src="/logo.png" alt="DDoS" className="h-6 w-auto" />
           <span className="text-sm tracking-[0.3em] uppercase font-[var(--font-syne)] font-bold">DDoS</span>
         </a>
-        <div className="flex gap-12 text-xs tracking-widest uppercase">
-          <a href="/" className="hover:opacity-50 transition-opacity">← Back</a>
-        </div>
       </nav>
 
       {/* Main Content */}
