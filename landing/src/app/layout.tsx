@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "DDoS — Charge Bots, Don't Block Them",
+  title: "DDoS - Charge Bots, Don't Block Them",
   description: "A protective layer that monetizes bot traffic instead of blocking it. AI scrapers pay to access. You get compensated.",
 };
 
