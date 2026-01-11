@@ -1,9 +1,8 @@
-import React from 'react'
+'use client'
+import Main from "@/components/main"
 
 const Page = () => {
-  return (
-    <div>Page</div>
-  )
-}
+  return <Main />;
+};
 
-export default Page
+export default Page;
